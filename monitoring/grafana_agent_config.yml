@@ -1,0 +1,19 @@
+logs:
+  configs:
+  - clients:
+    - basic_auth:
+        password: <PASSWORD>
+        username: <USERNAME>
+      url: https://logs-prod-008.grafana.net/loki/api/v1/push
+    name: logs
+    positions:
+      filename: /tmp/positions.yaml
+    scrape_configs:
+    - job_name: netspeedlog/log_scrape
+      static_configs:
+      - targets:
+        - localhost
+        labels:
+          __path__: /Users/ivan/Documents/netspeedlog/*.log
+          instance: '9nessus-rp'
+          job: netspeedlog
